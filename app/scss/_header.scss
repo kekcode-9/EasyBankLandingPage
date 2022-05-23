@@ -1,0 +1,196 @@
+@import './variables';
+
+.header {
+    width: 100%;
+    height: 8vh;
+    padding: 10px;
+    margin: 0;
+    position: static;
+    z-index: 2;
+    overflow-block: hidden;
+
+    nav {
+        width: 100%;
+        
+        top: 0%;
+        background-color: $white;
+        height: 60px;
+    }
+
+    .header__menu { //mobile menu
+        margin-right: 20px;
+        :first-child {
+            transform: rotate(0deg);
+            transform-origin: 0% 0%;
+            transition: 200ms ease-in-out;
+        }
+
+        :nth-child(2) {
+            opacity: 10;
+            transition: 200ms ease-in-out;
+        }
+
+        :last-child {
+            transform: rotate(0deg);
+            transform-origin: 0% 0%;
+            transition: 200ms ease-in-out;
+        }
+
+        // styling for direct child element with span tag
+        span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: $darkblue;
+        }
+
+        // for all except last child
+        :not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+    }
+
+    .header__menu__open {
+        display: block;
+        :first-child {
+            transform: rotate(45deg);
+            transform-origin: 25% 0%;
+            transition: 200ms ease-in-out;
+        }
+
+        :nth-child(2) {
+            opacity: 0;
+            transition: 200ms ease-in-out;
+        }
+
+        :last-child {
+            transform: rotate(-43deg);
+            transform-origin: 0% 0%;
+            transition: 200ms ease-in-out;
+        }
+    
+    }
+
+    .header__links__visible {
+        /*If we don't make the parent (header__links) display as flex
+        then in a::after when we set display as grid, it would make the
+        links apper one on top of the other*/
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            font-size: $font-sm;
+            color: $grayishBlue;
+            //padding-top: 3px;
+        }
+
+        a::after {
+            display: block;
+            content: '';
+            border-bottom: solid 3px #019fb6;  
+            transform: scaleX(0);  
+        }
+
+        a:hover:after {
+            transform: scaleX(1);
+            transition: transform 250ms ease-in-out;
+        }
+
+        :not(:last-child) {
+            margin-right: 32px;
+        }
+    }
+
+    .mobile__menu {
+        width: 0%;
+        height: 0%;
+        a {
+            opacity: 0;
+            font-size: $font-med;
+            letter-spacing: 3px;
+            color: $white;
+        }
+        a:active {
+            letter-spacing: 5px;
+            transition: letter-spacing 1s ease-in-out;
+        }
+    }
+
+    .mobile__menu__close {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(17, 174, 174, 0.797);
+        position: absolute;
+        z-index: 3;
+        margin-top: 10%;
+        font-size: $font-med;
+    }
+
+    .mobile__menu__open {
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(17, 174, 174, 0.797);
+        position: absolute;
+        z-index: 3;
+        margin-top: 10%;
+        font-size: $font-med;
+    }
+}
+
+@keyframes mobile__menu__in {
+    0% {
+        margin-left: 50%;
+        width: 0%;
+        height: 0px;
+    }
+
+    50% {
+        margin-left: 25%;
+        width: 50%;
+        height: 5px;
+    }
+    
+    100% {
+        margin-left: 25%;
+        width: 50%;
+        height: 400px;
+    }
+}
+
+@keyframes mobile__menu__out {
+    0% {
+        margin-left: 25%;
+        width: 50%;
+        height: 400px;
+    }
+
+    50% {
+        margin-left: 25%;
+        width: 50%;
+        height: 5px;
+    }
+
+    100% {
+        margin-left: 50%;
+        width: 0%;
+        height: 0px;
+    }
+}
+
+@keyframes mobile__menu__links__drop{
+    0%{
+        opacity: 0;
+        transform: translateY(0%);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(50%);
+    }
+}
