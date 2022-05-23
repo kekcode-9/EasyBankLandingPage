@@ -70,6 +70,14 @@ button, .button {
   font-size: 1.125rem;
 }
 
+.button:hover {
+  opacity: 0.6;
+}
+
+.button:active {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 63.9375em) {
   .hide-for-mobile {
     display: none;
