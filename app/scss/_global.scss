@@ -55,6 +55,14 @@ button, .button {
     //font-weight: 400;
 }
 
+.button:hover {
+    opacity: 0.6;
+}
+
+.button:active {
+    opacity: 0.8;
+}
+
 // responsive visibility
 .hide-for-mobile {
     @include breakpoint-down(medium) {
